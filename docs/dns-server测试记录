@@ -1,0 +1,35 @@
+# ===============================
+# DNS 测试记录与说明
+# ===============================
+
+# nslookup 测试：
+# nslookup doh.pub
+# nslookup dns.alidns.com
+# nslookup cloudflare-dns.com
+# nslookup dns.google
+
+# 系统DNS
+# dns-server = system
+
+# 国际公共DNS，不加密（ping ~79ms左右，较稳定）
+# dns-server = 8.8.8.8, 1.1.1.1
+
+# 国内公共DNS，不加密（ping ~12ms左右，很稳定）
+# dns-server = 223.5.5.5, 119.29.29.29
+
+# Google DoH，加密（ping 8.8.8.8 ~79ms 较稳定；8.8.4.4 ~177ms，丢包不稳定）
+# dns-server = https://dns.google/dns-query
+
+# Cloudflare DoH，加密（ping ~150ms左右，丢包不稳定）
+# dns-server = https://cloudflare-dns.com/dns-query
+
+# doh.pub DoH，加密（ping ~26ms左右，很稳定）
+# dns-server = https://doh.pub/dns-query
+
+# Alidns DoH，加密（ping ~13ms左右，很稳定）
+# dns-server = https://dns.alidns.com/dns-query
+
+# ===============================
+# 推荐组合（国内+国外兼顾，安全加密+稳定）
+# ===============================
+dns-server = https://doh.pub/dns-query, https://dns.alidns.com/dns-query, 8.8.8.8, 1.1.1.1
